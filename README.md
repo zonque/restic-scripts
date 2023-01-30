@@ -80,10 +80,10 @@ and eventually `check-version.py prune` to complete the work.
 
 ## Sanity check
 
-`check-snapshots.py` scans the snapshots in the bucket passed in the `RESTIC_REPOSITORY` environment variable.
+`check-snapshot.py` takes a Restic URL as argument and scans the snapshots in the bucket.
 
 It then performs two checks:
 
+* Assert that the number of snapshots taken in the last 48h is twice the amount than the number
+  of snapshots in the last 24h. This way, anomalities in backup behaviour can be detected
 * Assert that there was at least one snapshot taken within the last 24h.
-* Assert that the number of snapshots taken in the last 48h is twice the amount as the number
-  of snapshots in the last 24h. This way, anomalities in backup behaviour can be detected.

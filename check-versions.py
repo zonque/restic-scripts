@@ -56,4 +56,4 @@ if len(delete_objects) > 0:
 
 if check_failed:
     print("Check failed")
-    os._exit(1)
+    sys.exit(1)
