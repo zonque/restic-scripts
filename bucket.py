@@ -6,10 +6,12 @@ def restic_bucket():
     restic_repository = os.getenv("RESTIC_REPOSITORY")
 
     if restic_repository == None:
-        raise("RESTIC_REPOSITORY environment variable must be set!")
+        raise RuntimeError("RESTIC_REPOSITORY environment variable must be set!")
 
-    p = re.compile("s3:(https://s3\.([\w-]*).*)/(.*)")
+    p = re.compile(r"s3:(https://s3\.([\w-]*).*)/(.*)")
     x = p.match(restic_repository)
+    if not x:
+        raise ValueError(f"Unrecognized RESTIC_REPOSITORY format: {restic_repository}")
 
     endpoint_url = x.group(1)
     region_name = x.group(2)
