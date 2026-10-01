@@ -27,6 +27,8 @@ echo "========== $RESTIC_REPOSITORY =========="
 
 python3 check-versions.py check
 
+restic unlock
+
 # 90 days is the minimum retention time in Wasabi
 restic forget --prune --keep-within 90d
 
